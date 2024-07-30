@@ -8,9 +8,13 @@ import tweetRoute from "./tweetRoute";
 const router = express.Router();
 
 router.get<{}, MessageResponse>("/", (req, res) => {
-  res.json({
-    message: "Welocome to Dzanibe Media custom authentication demo project",
-  });
+  try {
+    res.json({
+      message: "Welocome to Dzanibe Media custom authentication demo project",
+    });
+  } catch (error) {
+    console.log({ error });
+  }
 });
 
 router.use("/user", user);
