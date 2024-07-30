@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get<{}, MessageResponse>("/", (req, res) => {
   res.json({
-    message: "API - 👋🌎🌍🌏",
+    message: "Welocome to Dzanibe Media custom authentication demo project",
   });
 });
 
