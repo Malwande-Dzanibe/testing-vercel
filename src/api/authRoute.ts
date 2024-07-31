@@ -13,8 +13,11 @@ const generateJWT = (id: string) => {
 };
 
 router.post("/", async (req, res) => {
-  const emailToken = req.body.token.emailToken;
-  const email = req.body.userEmail;
+  // const emailToken = req.body.token.emailToken;
+  // const email = req.body.userEmail;
+
+  const emailToken = req.body.emailToken;
+  const email = req.body.email;
 
   const apiTokenExpiration = new Date(
     new Date().getTime() + 1000 * 60 * 60 * 24 * 30 * 6
