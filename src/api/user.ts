@@ -80,7 +80,7 @@ router.post("/register", async (req, res) => {
   } catch (error) {
     console.log({ error });
 
-    res.status(400).json({
+    res.status(500).json({
       message: error,
     });
   }
@@ -131,7 +131,7 @@ router.post("/login", async (req, res) => {
     res.status(200).json(tokenToEmail);
   } catch (error) {
     console.log({ error });
-    res.status(400).json({
+    res.status(500).json({
       message: error,
     });
   }
