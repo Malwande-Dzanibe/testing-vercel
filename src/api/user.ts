@@ -135,7 +135,13 @@ router.post("/login", async (req, res) => {
 
 router.get("/tweets", async (req, res) => {
   try {
-    const tweets = prisma.post.findMany();
+    const tweets = await prisma.post.findMany();
+
+    if (!tweets) {
+      return res.status(404).json({
+        message: "No Posts To Display",
+      });
+    }
 
     res.status(200).json(tweets);
   } catch (error) {
