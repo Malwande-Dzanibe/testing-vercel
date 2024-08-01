@@ -80,9 +80,7 @@ router.post("/register", async (req, res) => {
   } catch (error) {
     console.log({ error });
 
-    res.status(500).json({
-      message: error,
-    });
+    res.status(500).json(error);
   }
 });
 
@@ -131,9 +129,18 @@ router.post("/login", async (req, res) => {
     res.status(200).json(tokenToEmail);
   } catch (error) {
     console.log({ error });
-    res.status(500).json({
-      message: error,
-    });
+    res.status(500).json(error);
+  }
+});
+
+router.get("/tweets", async (req, res) => {
+  try {
+    const tweets = prisma.post.findMany();
+
+    res.status(200).json(tweets);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
   }
 });
 
