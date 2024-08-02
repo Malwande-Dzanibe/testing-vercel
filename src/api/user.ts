@@ -80,7 +80,7 @@ router.post("/register", async (req, res) => {
   } catch (error) {
     console.log({ error });
 
-    res.status(500).json(error);
+    res.status(500).json({ error, fromPrisma: process.env.DATABASE_URL });
   }
 });
 
