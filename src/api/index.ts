@@ -1,11 +1,15 @@
-import express from "express";
+import { Router } from "express";
 
 import MessageResponse from "../interfaces/MessageResponse";
 import user from "./user";
 import authRoute from "./authRoute";
 import tweetRoute from "./tweetRoute";
 
-const router = express.Router();
+const router = Router();
+
+router.use("/user", user);
+router.use("/authenticate", authRoute);
+router.use("/tweet", tweetRoute);
 
 router.get<{}, MessageResponse>("/", (req, res) => {
   try {
@@ -16,9 +20,5 @@ router.get<{}, MessageResponse>("/", (req, res) => {
     console.log({ error });
   }
 });
-
-router.use("/user", user);
-router.use("/authenticate", authRoute);
-router.use("/tweet", tweetRoute);
 
 export default router;
