@@ -16,6 +16,10 @@ app.use(helmet());
 // app.use(cors());
 app.use(express.json());
 
+app.get("/favicon.ico", (req, res) => {
+  return res.status(204).end();
+});
+
 app.get<{}, MessageResponse>("/", (req, res) => {
   res.json({
     message: "🦄🌈✨👋🌎🌍🌏✨🌈🦄",
