@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PrismaClient, Token, Post } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import sendEmails from "../utils/sendEmail";
 
@@ -11,7 +11,7 @@ const generateEmailToken = () => {
   return Math.floor(100000 + Math.random() * 900000).toString();
 };
 
-router.post<Token>("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
   const email = req.body.email;
   let password = req.body.password;
   let confirmpassword = req.body.confirmpassword;
@@ -87,7 +87,7 @@ router.post<Token>("/register", async (req, res) => {
   }
 });
 
-router.post<Token>("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
@@ -136,7 +136,7 @@ router.post<Token>("/login", async (req, res) => {
   }
 });
 
-router.get<Post>("/tweets", async (req, res) => {
+router.get("/tweets", async (req, res) => {
   try {
     const tweets = await prisma.post.findMany();
 

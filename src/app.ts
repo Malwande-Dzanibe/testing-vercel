@@ -16,7 +16,7 @@ app.use(helmet());
 // app.use(cors());
 app.use(express.json());
 
-app.get<null>("/favicon.ico", (req, res) => {
+app.get("/favicon.ico", (req, res) => {
   return res.status(204).end();
 });
 
